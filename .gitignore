@@ -1,0 +1,19 @@
+# Ignore Django migration files
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+db.sqlite3
+**/migrations/
+
+# Ignore frontend build folder
+frontend/build/
+
+# Ignore Node.js modules
+frontend/node_modules/
+
+# Ignore Python virtual environment
+venv/
+
+# Ignore .env file
+**/.env
