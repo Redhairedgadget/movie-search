@@ -32,6 +32,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# TMDB endpoint base
+TMDB_BASE_URL = 'https://api.themoviedb.org/3/search/movie'
+
 
 # Application definition
 

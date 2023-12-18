@@ -1,0 +1,30 @@
+.movie-item {
+    flex: 0 0 calc(20% - 20px);  
+    margin-bottom: 10px;
+    border: 1px solid #ccc; 
+}
+
+.movie-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+}
+
+
+.movie-details {
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+
+@media (min-width: 740px)  {
+
+}
+
+@media (min-width: 950px) {
+
+}
+
+@media (min-width: 1200px) {
+
+}

@@ -4,9 +4,6 @@ import requests
 from django.core.cache import cache
 
 def movie_search(request):
-
-    base_url = 'https://api.themoviedb.org/3/search/movie'
-    
     query = request.GET.get('query', '')
     
     if not query:
@@ -14,16 +11,33 @@ def movie_search(request):
     
     cached = cache.get(query)
 
+    # First time user hit
     if not cached:
         print('not cached, caching')
-        params = {'api_key': settings.TMDB_KEY, 'query': query}
-        
-        response = requests.get(base_url, params=params)
+        params = {'api_key': settings.TMDB_KEY, 'query': query} 
+        response = requests.get(settings.TMDB_BASE_URL, params=params)
         data = response.json()
         
-        cache.set(query, data)
+        cache_entry = {'data': data, 'hits': 0}
+        cache.set(query, cache_entry)
 
-        return JsonResponse(data)
+        return JsonResponse(cache_entry)
     
+    # Either second hit or different page
     else: 
-        return JsonResponse(cached)
+
+        page = request.GET.get('page', '')
+
+        if page: 
+             params = {'api_key': settings.TMDB_KEY, 'query': query,'page': page}
+             response = requests.get(settings.TMDB_BASE_URL, params=params)
+             data = response.json()
+             cache_entry = {'data': data, 'hits': cached['hits']}
+             return JsonResponse(cache_entry)
+        
+        else: 
+            cached['hits'] += 1
+            cache.set(query, cached)
+            return JsonResponse(cached)
+    
+

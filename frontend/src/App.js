@@ -3,7 +3,7 @@ import MovieSearch from './components/MovieSearch';
 
 function App() {
     return (
-        <div className="App">
+        <div>
             <MovieSearch />
         </div>
     );
