@@ -3,19 +3,15 @@ import React from 'react';
 import './MovieItem.css';
 
 const MovieItem = ({ movie }) => {
-// Full URL for the poster
-  const posterUrl = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  // Full URL for the poster
+  const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`: process.env.PUBLIC_URL + `/no-image.jpg`;
 
   return (
-    <article className="movie-item">
-        <img src={posterUrl} alt={movie.title} className='movie-image'/>
-        <div className="movie-details">
-            <h3>{movie.title}</h3>
-            <p>{movie.release_date}</p>
-            <p>Language: {movie.original_language}</p>
-            <p>{movie.overview}</p>
-        </div>
-    </article>
+    <div className='movie-item' style={{backgroundImage: `url(${posterUrl})`}}>
+        <div className='movie-details'>
+          <h3>{movie.title}</h3>
+        </div> 
+    </div>
   );
 };
 

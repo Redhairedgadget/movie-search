@@ -1,0 +1,42 @@
+.pagination {
+    background-color: var(--secondary);
+    border-radius: 25px;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+}
+
+.pagination button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    /* flex-basis: 0 0 20%; */
+}
+
+#current {
+    background-color: var(--primary);
+}
+
+@media (min-width: 740px)  {
+    .pagination {
+        width: 95%;
+    }
+}
+
+@media (min-width: 950px) {
+    .pagination{
+        width: 50%;
+        bottom: 20px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .pagination{
+        width: 35%;
+        bottom: 20px;
+    }
+}

@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Angkor", sans-serif;
+    border: 0px;
+}
+
+html, body {
+    height: 100vh;
+
+    margin: 0;
+}
+
+:root {
+    --bg: #004EE4;
+    --primary: #FCD000;
+    --secondary: #00BBE4;
+    --accent: #fceb7d;
+    --text: black;
+    --text-secondary: white;
+
+    --border-radius: 20px;
+
+    height: 100vh;
+}
+
+@media (min-width: 740px)  {
+}
+
+@media (min-width: 950px) {
+}
+
+@media (min-width: 1200px) {
+
+    :root > *{
+        padding: 20px;
+    }
+}
