@@ -16,6 +16,10 @@
     /* flex-basis: 0 0 20%; */
 }
 
+.pagination button > * {
+    background-color: var(--accent);
+}
+
 #current {
     background-color: var(--primary);
 }

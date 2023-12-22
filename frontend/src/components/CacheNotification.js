@@ -1,11 +1,11 @@
 import './CacheNotification.css'
 
-const CacheNotification = ({hits}) => {
+const CacheNotification = ({cached, hits}) => {
 
     return (            
         <div className="render-notification">
-            {hits > 0 ? 
-                `This result is rendered from cache. In last two minutes this request was made ${hits} times.`
+            {cached ? 
+                `This result is rendered from cache. Repeated query hits in the last 2 mins: ${hits}.`
             : 
                 `This result is rendered from TMDB server`
             }
