@@ -13,7 +13,7 @@ const Pagination = ({page, setPage, totalPages, handleRequest, results}) => {
 
     const calculateVisible = () => {
 
-        // All pages fit
+        // Do all pages fit
         if (totalPages <= maxDisplayedNumbers) {
             setToStart(false);
             setPrev(false);
@@ -22,47 +22,47 @@ const Pagination = ({page, setPage, totalPages, handleRequest, results}) => {
             setNext(false);
 
             return [1, maxDisplayedNumbers]
+        } else {
+
+            // Page is at the threshold start
+            if (page <= maxDisplayedNumbers) {
+                setToStart(false);
+                setPrev(false);
+    
+                setToEnd(true)
+                setNext(true);
+    
+                return [1, maxDisplayedNumbers]
+    
+            }
+    
+            // Page is at the threshold end
+            else if (page > totalPages - maxDisplayedNumbers) {
+                setToStart(true);
+                setPrev(true);
+    
+                setNext(false);
+                setToEnd(false);
+    
+                return [totalPages - maxDisplayedNumbers - 1, totalPages]
+            }
+    
+            // Page is in the middle
+            else {
+                setToStart(true);
+                setNext(true);
+    
+                setToEnd(true);
+                setPrev(true);
+    
+                const offset = Math.floor(maxDisplayedNumbers / 2);
+    
+                const startPage = page - offset;
+                const endPage = page + offset;
+    
+                return [startPage, endPage]
+            }
         }
-
-        // Page is at the threshold start
-        if (page <= maxDisplayedNumbers) {
-            setToStart(false);
-            setPrev(false);
-
-            setToEnd(true)
-            setNext(true);
-
-            return [1, maxDisplayedNumbers]
-
-        }
-
-        // Page is at the threshold end
-        else if (page > totalPages - maxDisplayedNumbers) {
-            setToStart(true);
-            setPrev(true);
-
-            setNext(false);
-            setToEnd(false);
-
-            return [totalPages - maxDisplayedNumbers - 1, totalPages]
-        }
-
-        // Page is in the middle
-        else {
-            setToStart(true);
-            setNext(true);
-
-            setToEnd(true);
-            setPrev(true);
-
-            const offset = Math.floor(maxDisplayedNumbers / 2);
-
-            const startPage = page - offset;
-            const endPage = page + offset;
-
-            return [startPage, endPage]
-        }
-
     }
 
     const getPageList = useMemo(() => {
