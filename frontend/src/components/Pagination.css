@@ -1,6 +1,6 @@
 .pagination {
     background-color: var(--secondary);
-    border-radius: 25px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
     position: fixed;
     bottom: 0px;
     display: flex;
@@ -33,14 +33,11 @@
 @media (min-width: 950px) {
     .pagination{
         width: 50%;
-        bottom: 20px;
     }
 }
 
 @media (min-width: 1200px) {
-
     .pagination{
         width: 35%;
-        bottom: 20px;
     }
 }

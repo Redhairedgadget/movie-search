@@ -1,12 +1,13 @@
 .movie-item {
-    --width: 100%;
-    flex: 0 0 calc(var(--width) - 1em);  
+    --movie-item-border-radius: 30px;
+    --card-width: 100vw;
+    flex: 0 0 calc(var(--card-width) - 1em);  
     margin: 10px 0px;
-    height: 80vh;
+    height: 70vh;
     transition: transform 1s;
     transform-style: preserve-3d;
     border: 0px solid var(--accent);
-    border-radius: 20px;
+    border-radius: var(--movie-item-border-radius);
     background-position: center;
     background-size: cover;
 }
@@ -18,32 +19,30 @@
     padding: 10px;
     margin-top: -20px;
     height: 20%;
-    /* background-color: #f0f0f0; */
-    background-color: white;
-    border-radius: 0px 0px 20px 20px;
+    background-color: var(--text-secondary);
+    border-radius: 0 0 var(--movie-item-border-radius) var(--movie-item-border-radius);
     overflow: hidden;
 }
 
 .movie-details > *{
     margin: 0;
-    background-color: white;
 }
 
 @media (min-width: 740px)  {
     .movie-item {
-        --width: 30%
+        --card-width: 30%
     }
 }
 
 @media (min-width: 950px) {
     .movie-item {
-        --width: 20%
+        --card-width: 20%
     }
 }
 
 @media (min-width: 1200px) {
     .movie-item {
-        --width: 10%;
+        --card-width: 10%;
         height: 30vh;
     }
 }

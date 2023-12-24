@@ -1,15 +1,36 @@
 * {
     box-sizing: border-box;
-    background-color: var(--bg);
     color: var(--text);
     font-family: "Angkor", sans-serif;
     border: 0px;
 }
+html {
+    overflow: hidden;
+}
 
 html, body {
-    height: 100vh;
-
+    height: 100%;
+    background-color: var(--bg);
+    font-size: 12px;
     margin: 0;
+}
+
+body {
+    overflow: auto;
+}
+
+/* Major second scaling */
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h6 {
+    font-size: 1.12rem;
+}
+
+p {
+    font-size: 1rem;
 }
 
 :root {
@@ -26,12 +47,45 @@ html, body {
 }
 
 @media (min-width: 740px)  {
+    body {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    h6 {
+        font-size: 1.125em;
+    }
 }
 
 @media (min-width: 950px) {
+    body {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    h6 {
+        font-size: 1.125rem; 
+    }
 }
 
 @media (min-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+
+    h6 {
+        font-size: 1.125em;
+    }
 
     :root > *{
         padding: 20px;

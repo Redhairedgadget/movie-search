@@ -16,10 +16,10 @@ const Header = ({query, handleRequest, setQuery}) => {
 
     return (
         <div className='title-search'>
-            <h2 className="title">Movie Search</h2>
+            <h3 className="title">Movie Search</h3>
             <form className='search-bar'>
                 <input type="text" value={query} placeholder="Search movies..." onChange={handleTextChange} />
-                <button type="submit" onClick={handleSearch}><i className="fa fa-search" aria-hidden="true"></i></button>
+                <button type="submit" onClick={handleSearch}><i className="fa fa-search" aria-hidden="true" ></i></button>
             </form>
 
         </div>

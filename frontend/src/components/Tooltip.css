@@ -1,0 +1,42 @@
+.tooltip {
+    position: relative;
+    background-color: var(--accent);
+    float: right;
+    height: 10%;
+    width: 10%;
+    border-radius: 0 var(--border-radius) 0 var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tooltip:hover {
+    background-color: var(--primary);
+}
+
+.tooltip > i {
+    font-size: 32px;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    /* min-width: 82vw; */
+
+    min-width: calc(var(--card-width) * 0.82);
+    /* max-width: 90vw; */
+    background-color: var(--text);
+    color: var(--text-secondary);
+    text-align: center;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    right: 100%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

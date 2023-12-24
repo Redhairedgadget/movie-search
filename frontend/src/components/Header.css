@@ -1,12 +1,11 @@
 .title-search {
-    /* height: 10hv; */
     display: flex;
     flex-direction: column;
 }
 
 .title {
     background: var(--primary);
-    width: 20%;
+    width: 70%;
     /* height: 5vh; */
     border-radius: 20px 20px 0px 0px;
     margin: 0;
@@ -16,9 +15,8 @@
 
 .search-bar input {
     padding: 10px;
-    font-size: 17px;
     border: 0px solid var(--yellow);
-    border-radius: 0px 20px 20px 20px;
+    border-radius: 0px var(--border-radius) var(--border-radius) var(--border-radius);
     float: left;
     width: 100%;
     background: var(--primary);
@@ -27,13 +25,12 @@
 
 .search-bar button {
     float: left;
-    width: 10%;
+    width: 15%;
     padding: 10px;
     background: var(--accent);
-    margin-left: -10%;
-    font-size: 17px;
+    margin-left: -15%;
     border: 0px solid var(--primary);
-    border-radius: 20px 20px 20px 20px;
+    border-radius: var(--border-radius);
     border-left: none;
     cursor: pointer;
 }
@@ -43,6 +40,14 @@
 }
 
 @media (min-width: 740px)  {
+    .title {
+        width: 40%;
+    }
+
+    .search-bar button {
+        width: 10%;
+        margin-left: -10%;
+    }
 
 }
 
@@ -51,4 +56,5 @@
 }
 
 @media (min-width: 1200px) {
+
 }

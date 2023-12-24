@@ -1,9 +1,8 @@
 .render-notification {
-    /* border: 1px solid var(--gray); */
     padding: 10px;
     border-radius: 20px;
-    height: 5vh;
-    line-height: 4vh;
     vertical-align: middle;
     background: var(--secondary);
+    color: var(--text-secondary);
+    margin-bottom: 15px;
 }
