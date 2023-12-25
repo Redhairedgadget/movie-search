@@ -20,10 +20,9 @@
   
 .tooltip .tooltiptext {
     visibility: hidden;
-    /* min-width: 82vw; */
-
     min-width: calc(var(--card-width) * 0.82);
-    /* max-width: 90vw; */
+    max-height: 60vh;
+    overflow-y: auto;
     background-color: var(--text);
     color: var(--text-secondary);
     text-align: center;

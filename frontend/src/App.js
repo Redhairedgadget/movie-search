@@ -50,9 +50,9 @@ function App() {
                     <>
                         {Object.keys(results).length > 0 && <CacheNotification cached={results[page]?.cached || false} hits={hits}/>}
                         <MovieList pageData={results[page]?.data?.results ?? []} />
-                        {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={debouncedRequest} results={results} /> }
                     </>
                 }
+                {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={debouncedRequest} results={results} /> }
         </div>
     );
 }
