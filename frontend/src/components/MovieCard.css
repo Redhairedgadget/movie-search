@@ -1,0 +1,81 @@
+:root {
+    /* Card vars */
+    --card-border-radius: 30px;
+    --card-width: 100vw;
+    --card-height-multiplier: 1.2;
+    --card-height: calc(var(--card-width) * var(--card-height-multiplier));
+}
+
+.card {
+    margin: 1vh 0px;
+    width: var(--card-width);
+    height: var(--card-height);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    border: 0px solid var(--accent);
+    border-radius: var(--card-border-radius);
+    background-position: center;
+    background-size: cover;
+}
+
+.card-details {
+    --details-height: calc(var(--card-height) * 0.2);
+    position: absolute;
+    bottom: 0;
+    width: var(--card-width);
+    margin-top: -20px;
+    height: var(--details-height);
+    background-color: var(--text-secondary);
+    border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-details > *{
+    margin: 0;
+}
+
+.card-details > h6 {
+    padding: 10px;
+}
+
+.age-tag {
+    --adult-tag-size: calc(var(--details-height) * 0.5);
+    background-color: var(--secondary);
+    height: var(--adult-tag-size);
+    min-width: var(--adult-tag-size);
+    border-radius: var(--card-border-radius) 0 var(--card-border-radius) var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: large;
+}
+
+@media (min-width: 540px)  {
+    .card{
+        --card-width: 85vw;
+        --card-height: calc(var(--card-width) * var(--card-height-multiplier));
+    }
+}
+
+@media (min-width: 740px)  {
+    .card {
+        --card-width: 45vw;
+        --card-height: calc(var(--card-width) * var(--card-height-multiplier));
+    }
+}
+
+@media (min-width: 950px) {
+    .card {
+        --card-width: 30vw;
+        --card-height: calc(var(--card-width) * var(--card-height-multiplier));
+    }
+}
+
+@media (min-width: 1200px) {
+    .card{
+        --card-width: 15vw;
+        --card-height: calc(var(--card-width) * var(--card-height-multiplier));
+    }
+}

@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import './Pagination.css';
 
-const Pagination = ({page, setPage, totalPages, handleRequest, results}) => {
+const Pagination = ({page, setPage, totalPages, handleRequest}) => {
     const maxDisplayedNumbers = 6;
 
     // Shortcut bottons availability states
@@ -67,15 +67,11 @@ const Pagination = ({page, setPage, totalPages, handleRequest, results}) => {
 
     const getPageList = useMemo(() => {
         let [start, end] = calculateVisible();
-
-       console.log(totalPages)
-
         const numButtons = [];
 
         while (start <= end) {
             numButtons.push(start++)
         }
-
 
         return (
             <>
@@ -108,13 +104,13 @@ const Pagination = ({page, setPage, totalPages, handleRequest, results}) => {
         <div className='pagination'>
             {toStart &&
                 <button onClick={() => handlePageChange(1)}>
-                    <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                    <i className="fa fa-angle-double-left" aria-hidden="true"></i>
                 </button>
             }
 
             {prev &&
                 <button onClick={handlePrevious}>
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
+                    <i className="fa fa-angle-left" aria-hidden="true"></i>
                 </button>
             }
 
@@ -122,13 +118,13 @@ const Pagination = ({page, setPage, totalPages, handleRequest, results}) => {
 
             {next && 
                 <button onClick={handleNext}>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
                 </button>
             }
 
             {toEnd &&
                 <button onClick={() => handlePageChange(totalPages)}>
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                    <i className="fa fa-angle-double-right" aria-hidden="true"></i>
                 </button>
             }
         </div>

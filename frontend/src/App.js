@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import MovieList from './components/MovieList';
+import MovieList from './pages/MovieList';
 import './App.css';
-import Header from './components/Header';
-import Pagination from './components/Pagination';
+import Header from './layout/Header';
+import Pagination from './layout/Pagination';
 import CacheNotification from './components/CacheNotification';
 import { useDebounce } from './utils/debounce';
 import './Spinner.css';
@@ -52,7 +52,7 @@ function App() {
                         <MovieList pageData={results[page]?.data?.results ?? []} />
                     </>
                 }
-                {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={debouncedRequest} results={results} /> }
+                {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={debouncedRequest} loading={loading} /> }
         </div>
     );
 }

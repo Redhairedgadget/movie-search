@@ -9,8 +9,9 @@
 }
 
 .pagination button {
-    height: 40px;
-    width: 40px;
+    --pagination-size: 5vh;
+    height: var(--pagination-size);
+    width: var(--pagination-size);
     border-radius: 50%;
     background-color: var(--accent);
     /* flex-basis: 0 0 20%; */

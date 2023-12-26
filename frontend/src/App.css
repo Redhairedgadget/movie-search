@@ -1,9 +1,39 @@
+:root {
+    /* Color scheme */
+    --bg: #004EE4;
+    --primary: #FCD000;
+    --secondary: #00BBE4;
+    --accent: #fceb7d;
+    --text: black;
+    --text-secondary: white;
+
+    --border-radius: 20px;
+
+    height: 100vh;
+}
+
+/* Scroller */
+::-webkit-scrollbar {
+    width: 2vw;
+    position: absolute;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary); 
+}
+
 * {
     box-sizing: border-box;
     color: var(--text);
     font-family: "Angkor", sans-serif;
     border: 0px;
 }
+
 html {
     overflow: hidden;
 }
@@ -19,31 +49,18 @@ body {
     overflow: auto;
 }
 
-/* Major second scaling */
+/* Text scaling */
 
 h2 {
     font-size: 1.8rem;
 }
 
 h6 {
-    font-size: 1.12rem;
+    font-size: 1.2rem;
 }
 
-p {
+span {
     font-size: 1rem;
-}
-
-:root {
-    --bg: #004EE4;
-    --primary: #FCD000;
-    --secondary: #00BBE4;
-    --accent: #fceb7d;
-    --text: black;
-    --text-secondary: white;
-
-    --border-radius: 20px;
-
-    height: 100vh;
 }
 
 @media (min-width: 740px)  {
@@ -61,6 +78,10 @@ p {
 }
 
 @media (min-width: 950px) {
+    ::-webkit-scrollbar {
+        width: 0.5vw;
+    }
+
     body {
         font-size: 16px;
     }
@@ -84,7 +105,11 @@ p {
     }
 
     h6 {
-        font-size: 1.125em;
+        font-size: 0.5em;
+    }
+
+    span {
+        font-size: 0.8rem;
     }
 
     :root > *{

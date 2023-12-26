@@ -4,7 +4,7 @@
     float: right;
     height: 10%;
     width: 10%;
-    border-radius: 0 var(--border-radius) 0 var(--border-radius);
+    border-radius: 0 var(--card-border-radius) 0 var(--card-border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,23 +15,24 @@
 }
 
 .tooltip > i {
-    font-size: 32px;
+    font-size: large;
 }
   
 .tooltip .tooltiptext {
     visibility: hidden;
     min-width: calc(var(--card-width) * 0.82);
-    max-height: 60vh;
+    max-height: var(--card-height);
     overflow-y: auto;
     background-color: var(--text);
     color: var(--text-secondary);
     text-align: center;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    border-radius: var(--border-radius) 0 var(--border-radius) var(--border-radius);
     position: absolute;
     z-index: 1;
     top: 0%;
     right: 100%;
     opacity: 0;
+    padding: 0.2vw;
     transition: opacity 0.3s;
 }
 

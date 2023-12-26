@@ -4,5 +4,10 @@
     vertical-align: middle;
     background: var(--secondary);
     color: var(--text-secondary);
-    margin-bottom: 15px;
+}
+
+@media (min-width: 950px) {
+    .render-notification {
+        font-size: 12px;
+    }
 }

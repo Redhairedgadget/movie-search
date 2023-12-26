@@ -1,6 +1,5 @@
 import React from 'react';
-//TODO: use css modules?
-import './MovieItem.css';
+import './MovieCard.css';
 import Tooltip from './Tooltip';
 
 const MovieItem = ({ movie }) => {
@@ -10,13 +9,14 @@ const MovieItem = ({ movie }) => {
   const movieOverview = movie.overview || 'No description available :(';
 
   return (
-    <div className='movie-item' style={{backgroundImage: `url(${posterUrl})`}}>
+    <div className='card' style={{backgroundImage: `url(${posterUrl})`}}>
       <Tooltip movieOverview={movieOverview}>
-        <i class="fa fa-info" aria-hidden="true"></i>
+        <i className="fa fa-info" aria-hidden="true"></i>
       </Tooltip>
-        <div className='movie-details'>
-          <h6>{movie.title}</h6>
-        </div> 
+      <div className='card-details'>
+        <h6>{movie.title}</h6>
+        <div className='age-tag'>{ movie.adult ? '18+' : '0+'}</div>
+      </div> 
     </div>
   );
 };

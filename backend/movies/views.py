@@ -14,7 +14,7 @@ def movie_search(request):
     # First time user hit
     if not existing_entry:
         print('not cached, caching')
-        params = {'api_key': settings.TMDB_KEY, 'query': query} 
+        params = {'api_key': settings.TMDB_KEY, 'query': query, 'include_adult': True} 
         response = requests.get(settings.TMDB_BASE_URL, params=params)
         data = response.json()
 
@@ -37,7 +37,7 @@ def movie_search(request):
                 return JsonResponse(existing_entry)
             
             else:
-                params = {'api_key': settings.TMDB_KEY, 'query': query,'page': page}
+                params = {'api_key': settings.TMDB_KEY, 'query': query,'page': page, 'include_adult': True}
                 response = requests.get(settings.TMDB_BASE_URL, params=params)
                 data = response.json()
                 existing_entry['pages'][page] = {'data': data, 'cached': False};

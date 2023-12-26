@@ -13,6 +13,10 @@
     justify-content: center;
 }
 
+input:focus {
+    outline: none;
+}
+
 .search-bar input {
     padding: 10px;
     border: 0px solid var(--yellow);
