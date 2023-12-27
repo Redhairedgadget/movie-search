@@ -76,7 +76,7 @@ const Pagination = ({page, setPage, totalPages, handleRequest}) => {
         return (
             <>
             {numButtons.map((el) => (
-                <button id={el === page && 'current'} key={el} onClick={() => handlePageChange(el)}>
+                <button id={el === page ? 'current' : ''} key={el} onClick={() => handlePageChange(el)}>
                     {el}
                 </button>
             ))}
