@@ -22,8 +22,8 @@ function App() {
         setLoading(true);
         
         try {
-            const response = await fetch(`http://localhost:8000/api/search/?query=${query}${nextPage ? `&page=${nextPage}`: ''}`);
-            const res = await response.json();
+            const movies = await fetch(`${process.env.REACT_APP_BASE_URL}/api/search/?query=${query}${nextPage ? `&page=${nextPage}`: ''}`);
+            const res = await movies.json();
 
             if(!nextPage) setPage(1);
 
@@ -31,10 +31,10 @@ function App() {
             setHits(res.hits);
             setTotalPages(res.pages[page].data.total_pages);
         } catch (error) {
-            console.error('Error fetching search results:', error);
+            console.error('Error fetching search results: ', error);
+        } finally {
+            setLoading(false);
         }
-
-        setLoading(false);
     }
 
     const debouncedRequest = useDebounce(handleRequest, 500);
@@ -42,17 +42,17 @@ function App() {
     return (
         <div>
             <Header query={query} setQuery={setQuery} handleRequest={debouncedRequest} loading={loading}/>
+            {Object.keys(results).length > 0 && <CacheNotification cached={results[page]?.cached || false} hits={hits}/>}
                 {loading ? 
                     <div className="spinner-container">
                         <div className="spinner"></div>
                     </div>
                 : 
                     <>
-                        {Object.keys(results).length > 0 && <CacheNotification cached={results[page]?.cached || false} hits={hits}/>}
                         <MovieList pageData={results[page]?.data?.results ?? []} />
                     </>
                 }
-                {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={debouncedRequest} loading={loading} /> }
+                 {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={debouncedRequest} loading={loading} /> }
         </div>
     );
 }
