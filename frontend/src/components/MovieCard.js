@@ -15,7 +15,9 @@ const MovieItem = ({ movie }) => {
       </Tooltip>
       <div className='card-details'>
         <h6>{movie.title}</h6>
-        <div className='age-tag'>{ movie.adult ? '18+' : '0+'}</div>
+        { movie.adult ? 
+          <div className='age-tag'>18+</div> : null
+        }
       </div> 
     </div>
   );
