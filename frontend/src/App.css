@@ -97,18 +97,6 @@ span {
     body {
         font-size: 18px;
     }
-    
-    h2 {
-        font-size: 1.8em;
-    }
-
-    h6 {
-        font-size: 0.5em;
-    }
-
-    span {
-        font-size: 0.8rem;
-    }
 
     :root > *{
         padding: 20px;

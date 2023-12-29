@@ -23,9 +23,10 @@
     min-width: calc(var(--card-width) * 0.82);
     max-height: var(--card-height);
     overflow-y: auto;
-    background-color: var(--text);
-    color: var(--text-secondary);
+    background-color: var(--secondary);
+    color: var(--text);
     text-align: center;
+    line-height: 1.2;
     border-radius: var(--border-radius) 0 var(--border-radius) var(--border-radius);
     position: absolute;
     z-index: 1;
@@ -34,6 +35,11 @@
     opacity: 0;
     padding: 0.2vw;
     transition: opacity 0.3s;
+}
+
+.tooltip ::-webkit-scrollbar {
+    width: calc(var(--card-width) * 0.02);
+
 }
 
 .tooltip:hover .tooltiptext {

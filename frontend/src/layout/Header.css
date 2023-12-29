@@ -8,7 +8,7 @@
     width: 70%;
     border-radius: 20px 20px 0px 0px;
     margin: 0;
-    padding-left: 10px
+    padding-left: 10px;
 }
 
 input:focus {
@@ -17,7 +17,6 @@ input:focus {
 
 .search-bar input {
     padding: 10px;
-    border: 0px solid var(--yellow);
     border-radius: 0px var(--border-radius) var(--border-radius) var(--border-radius);
     float: left;
     width: 100%;
