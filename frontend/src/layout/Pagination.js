@@ -21,7 +21,7 @@ const Pagination = ({page, setPage, totalPages, handleRequest}) => {
             setToEnd(false);
             setNext(false);
 
-            return [1, maxDisplayedNumbers]
+            return [1, totalPages]
         } else {
 
             // Page is at the threshold start

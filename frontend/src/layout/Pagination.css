@@ -4,8 +4,9 @@
     position: fixed;
     bottom: 0px;
     display: flex;
-    width: 100vw;
+    max-width: 100vw;
     justify-content: space-between;
+    gap: 1.5vw
 }
 
 .pagination button {
@@ -27,18 +28,18 @@
 
 @media (min-width: 740px)  {
     .pagination {
-        width: 95%;
+        max-width: 95%;
     }
 }
 
 @media (min-width: 950px) {
     .pagination{
-        width: 50%;
+        max-width: 50%;
     }
 }
 
 @media (min-width: 1200px) {
     .pagination{
-        width: 35%;
+        max-width: 35%;
     }
 }

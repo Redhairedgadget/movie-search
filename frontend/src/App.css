@@ -12,21 +12,6 @@
     height: 100vh;
 }
 
-/* Scroller */
-::-webkit-scrollbar {
-    width: 2vw;
-    position: absolute;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: var(--border-radius);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary); 
-}
-
 * {
     box-sizing: border-box;
     color: var(--text);
@@ -63,6 +48,22 @@ span {
     font-size: 1rem;
 }
 
+@media (min-width: 540px) {
+    /* Scroller */
+    ::-webkit-scrollbar {
+        position: absolute;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: var(--border-radius);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary); 
+    }
+}
+
 @media (min-width: 740px)  {
     body {
         font-size: 14px;
@@ -78,9 +79,6 @@ span {
 }
 
 @media (min-width: 950px) {
-    ::-webkit-scrollbar {
-        width: 0.5vw;
-    }
 
     body {
         font-size: 16px;
