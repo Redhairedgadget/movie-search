@@ -16,7 +16,7 @@ const MovieItem = ({ movie }) => {
       <div className='card-details'>
         <h6>{movie.title}</h6>
         { movie.adult ? 
-          <div className='age-tag'>18+</div> : null
+          <div className='adult-tag'>18+</div> : null
         }
       </div> 
     </div>

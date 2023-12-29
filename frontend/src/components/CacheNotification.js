@@ -5,7 +5,7 @@ const CacheNotification = ({query, totalResults, cached, hits}) => {
 
     return (            
         <div className="render-notification">
-            {query.length > 0 ? 
+            {query ? 
                 totalResults > 0 ? 
                     (cached ? 
                         `This result is rendered from cache.` + hitsMessage

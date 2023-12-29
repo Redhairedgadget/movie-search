@@ -1,24 +1,34 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import "./Header.css"
 import { useDebounce } from '../utils/debounce';
 
-const Header = ({handleRequest, setQuery}) => {
+const Header = ({setQuery}) => {
+    const [userInput, setUserInput] = useState('');
+
+    const debounceInputSet = useDebounce(setUserInput, 500)
+
     const handleClick = async (e) => {
         e.preventDefault();
-        setQuery(e.target.value);
+        setQuery(userInput);
     };
 
-    const handleTextChange = async (e) => {
-        if (e.target.value.length >= 3) {
-            setQuery(e.target.value);
-        }
+    const handleTextChange = (e) => {
+        const trimmedInput = e.target.value.trim();
+        debounceInputSet(trimmedInput);
     };
+
+    useEffect(() => {
+        if (userInput.length >= 3) {
+            setQuery(userInput);
+        }
+    }, [userInput])
+
 
     return (
         <div className='title-search'>
             <h3 className="title">Movie Search</h3>
             <form className='search-bar'>
-                <input type="text" placeholder="Search movies..." onChange={useDebounce(handleTextChange, 500)} />
+                <input type="text" placeholder="Search movies..." onChange={handleTextChange} maxLength={200}/>
                 <button type="submit" onClick={handleClick}><i className="fa fa-search" aria-hidden="true" ></i></button>
             </form>
 

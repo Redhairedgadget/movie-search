@@ -21,15 +21,7 @@ function App() {
     const handleRequest = async (nextPage=null) => {
         if (query) {
             try {
-                if((nextPage && !(nextPage in results)) || !nextPage) {
-                    setLoading(true);
-                    setCached(false);
-                    
-                    await getQuery(nextPage);
-                } else {
-                    setCached(true);
-                }
-                await getHits();
+                await getQuery(nextPage)
             } catch (error) {
                 console.error('Error fetching search results: ', error);
             } finally {
@@ -44,14 +36,11 @@ function App() {
         const moviesResult = await (await fetch(`${process.env.REACT_APP_BASE_URL}/api/search/?query=${query}${nextPage ? `&page=${nextPage}`: ''}`)).json();
 
         if(!nextPage) setPage(1);
-
+        
+        setHits(moviesResult.hits);
         setResults(moviesResult.pages || {});
+        setCached(moviesResult.pages[nextPage || 1]?.cached || false);
         setTotalPages(moviesResult.pages[nextPage || 1].data.total_pages);
-    }
-
-    const getHits = async () => {
-        const hitsResult = await (await fetch(`${process.env.REACT_APP_BASE_URL}/api/get-hits/?query=${query}`)).json();
-        setHits(hitsResult.hits);
     }
 
     useEffect(() => { handleRequest()}, [query]);

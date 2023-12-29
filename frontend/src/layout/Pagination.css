@@ -13,8 +13,8 @@
     height: var(--pagination-size);
     width: var(--pagination-size);
     border-radius: 50%;
+    cursor: pointer;
     background-color: var(--accent);
-    /* flex-basis: 0 0 20%; */
 }
 
 .pagination button > * {

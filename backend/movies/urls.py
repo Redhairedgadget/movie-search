@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import movie_search, get_hits
+from .views import movie_search
 
 urlpatterns = [
-    path('search/', movie_search, name='movie-search'),
-    path('get-hits/', get_hits, name='get-hits')
+    path('search/', movie_search, name='movie-search')
 ]
