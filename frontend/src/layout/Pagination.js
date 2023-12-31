@@ -2,19 +2,21 @@ import { useState, useMemo } from "react";
 import './Pagination.css';
 
 const Pagination = ({page, setPage, totalPages, handleRequest}) => {
-    const maxDisplayedNumbers = 6;
-
+    
     // Shortcut bottons availability states
     const [prev, setPrev] = useState(false);
     const [next, setNext] = useState(false);
-
+    
     const [toStart, setToStart] = useState(false);
     const [toEnd, setToEnd] = useState(false);
-
+    
     const calculateVisible = () => {
+        const maxDisplayedButtons = 9;
+        const twoShortcutsAdjustment = 2;
+        const fourShortcutsAjustment = 4;
 
         // Do all pages fit
-        if (totalPages <= maxDisplayedNumbers) {
+        if (totalPages <= maxDisplayedButtons) {
             setToStart(false);
             setPrev(false);
 
@@ -25,26 +27,26 @@ const Pagination = ({page, setPage, totalPages, handleRequest}) => {
         } else {
 
             // Page is at the threshold start
-            if (page <= maxDisplayedNumbers) {
+            if (page <= maxDisplayedButtons - twoShortcutsAdjustment) {
                 setToStart(false);
                 setPrev(false);
     
                 setToEnd(true)
                 setNext(true);
     
-                return [1, maxDisplayedNumbers]
+                return [1, maxDisplayedButtons - twoShortcutsAdjustment]
     
             }
     
             // Page is at the threshold end
-            else if (page > totalPages - maxDisplayedNumbers) {
+            else if (page > totalPages - maxDisplayedButtons + twoShortcutsAdjustment) {
                 setToStart(true);
                 setPrev(true);
     
                 setNext(false);
                 setToEnd(false);
     
-                return [totalPages - maxDisplayedNumbers - 1, totalPages]
+                return [totalPages - maxDisplayedButtons + 1 + twoShortcutsAdjustment, totalPages]
             }
     
             // Page is in the middle
@@ -54,8 +56,8 @@ const Pagination = ({page, setPage, totalPages, handleRequest}) => {
     
                 setToEnd(true);
                 setPrev(true);
-    
-                const offset = Math.floor(maxDisplayedNumbers / 2);
+
+                const offset = Math.floor((maxDisplayedButtons - fourShortcutsAjustment)/ 2);
     
                 const startPage = page - offset;
                 const endPage = page + offset;
@@ -85,9 +87,8 @@ const Pagination = ({page, setPage, totalPages, handleRequest}) => {
     }, [page, totalPages]);
 
     const handlePageChange = async (i) => {
-        // TODO: check for unnessessary renders
-        handleRequest(i);
         setPage(i);
+        handleRequest(i);
     }
 
     // handler for the next button

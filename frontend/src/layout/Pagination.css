@@ -10,9 +10,9 @@
 }
 
 .pagination button {
-    --pagination-size: 5vh;
-    height: var(--pagination-size);
-    width: var(--pagination-size);
+    --pagination-button-size: 4.2vh;
+    height: var(--pagination-button-size);
+    width: var(--pagination-button-size);
     border-radius: 50%;
     cursor: pointer;
     background-color: var(--accent);
@@ -26,20 +26,26 @@
     background-color: var(--primary);
 }
 
+@media (min-width: 350px)  {
+    .pagination button{
+        --pagination-button-size: 4.5vh;
+    }
+}
+
 @media (min-width: 740px)  {
     .pagination {
-        max-width: 95%;
+        max-width: 95vw;
     }
 }
 
 @media (min-width: 950px) {
     .pagination{
-        max-width: 50%;
+        max-width: 70vw;
     }
 }
 
 @media (min-width: 1200px) {
     .pagination{
-        max-width: 35%;
+        max-width: 40vw;
     }
 }

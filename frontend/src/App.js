@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import MovieList from './pages/MovieList';
 import './App.css';
 import Header from './layout/Header';
+import MovieList from './pages/MovieList';
 import Pagination from './layout/Pagination';
 import CacheNotification from './components/CacheNotification';
 import './Spinner.css';
@@ -21,6 +21,7 @@ function App() {
     const handleRequest = async (nextPage=null) => {
         if (query) {
             try {
+                setLoading(true);
                 await getQuery(nextPage)
             } catch (error) {
                 console.error('Error fetching search results: ', error);
@@ -32,36 +33,34 @@ function App() {
         }
     }
 
-    const getQuery = async (nextPage=null) => {
-        const moviesResult = await (await fetch(`${process.env.REACT_APP_BASE_URL}/api/search/?query=${query}${nextPage ? `&page=${nextPage}`: ''}`)).json();
-
+    const getQuery = async (nextPage = null) => {
+        const { hits, pages } = await (await fetch(`${process.env.REACT_APP_BASE_URL}/api/search/?query=${query}${nextPage ? `&page=${nextPage}` : ''}`)).json();
+        
         if(!nextPage) setPage(1);
-
-        setHits(moviesResult.hits);
-        setResults(moviesResult.pages || {});
-        setCached(moviesResult.pages[nextPage || 1]?.cached || false);
-        setTotalPages(moviesResult.pages[nextPage || 1]?.data.total_pages || 1);
-    }
+        setHits(hits);
+        setResults(pages || {});
+        setCached(pages[nextPage || 1]?.cached || false);
+        setTotalPages(pages[nextPage || 1]?.data.total_pages || 1);
+     };
 
     useEffect(() => { handleRequest()}, [query]);
 
     return (
-        <div>
-            <Header query={query} setQuery={setQuery} handleRequest={handleRequest} loading={loading}/>
-                {loading ? 
-                    <div className="spinner-container">
-                        <div className="spinner"></div>
-                    </div>
-                : 
-                <>
-                        <CacheNotification query={query} totalResults={results[page]?.data?.total_results} cached={cachedStatus} hits={hits}/>
-                        <MovieList pageData={results[page]?.data?.results ?? []} />
-                    </>
-                }
-
-                {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={handleRequest} loading={loading} /> }
-        </div>
-    );
+        <>
+           <Header query={query} setQuery={setQuery} handleRequest={handleRequest} loading={loading} />
+           {loading ? (
+              <div className="spinner-container">
+                 <div className="spinner"></div>
+              </div>
+           ) : (
+              <>
+                 <CacheNotification query={query} totalResults={results[page]?.data?.total_results} cached={cachedStatus} hits={hits} />
+                 <MovieList pageData={results[page]?.data?.results ?? []} />
+              </>
+           )}
+           {totalPages > 1 && <Pagination page={page} setPage={setPage} totalPages={totalPages} handleRequest={handleRequest} loading={loading} />}
+        </>
+     );
 }
 
 export default App;

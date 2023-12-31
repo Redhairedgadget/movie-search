@@ -9,15 +9,13 @@ const MovieItem = ({ movie }) => {
   const movieOverview = movie.overview || 'No description available :(';
 
   return (
-    <div className='card' style={{backgroundImage: `url(${posterUrl})`}}>
+    <div className='card' style={{backgroundImage: `url(${posterUrl})`}} aria-label={movie.title}>
       <Tooltip movieOverview={movieOverview}>
         <i className="fa fa-info" aria-hidden="true"></i>
       </Tooltip>
       <div className='card-details'>
         <h6>{movie.title}</h6>
-        { movie.adult ? 
-          <div className='adult-tag'>18+</div> : null
-        }
+        {movie.adult && <div className='adult-tag'>18+</div>}
       </div> 
     </div>
   );
