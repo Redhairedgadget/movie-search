@@ -1,4 +1,4 @@
-.render-notification {
+.notification {
     padding: 10px;
     border-radius: 20px;
     vertical-align: middle;
@@ -6,8 +6,16 @@
     color: var(--text-secondary);
 }
 
+.info {
+    background: var(--secondary);
+}
+
+.error {
+    background: var(--error);
+}
+
 @media (min-width: 950px) {
-    .render-notification {
+    .notification {
         font-size: 12px;
     }
 }

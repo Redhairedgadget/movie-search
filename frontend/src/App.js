@@ -3,33 +3,42 @@ import './App.css';
 import Header from './layout/Header';
 import MovieList from './pages/MovieList';
 import Pagination from './layout/Pagination';
-import CacheNotification from './components/CacheNotification';
+import Notification from './components/Notification';
 import './Spinner.css';
 
 function App() {
     const [loading, setLoading] = useState(false)
     const [query, setQuery] = useState('');
     const [results, setResults] = useState({});
-    const [hits, setHits] = useState(0);
-
-    const [cachedStatus, setCached] = useState(false);
 
     // Pages
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
 
+    // Notification messages
+    const defaultMessage = 'Nothing to display without input. Use the search bar!';
+    const noResultsMessage = 'Sorry, no results. Try searching something else.';
+    const renderedFromServerMessage = 'This result is rendered from TMDB server';
+    const cacheMessage = 'This result is rendered from cache.'
+
+    const [isError, setIsError] = useState(false);
+    const [message, setMessage] = useState(defaultMessage)
+
     const handleRequest = async (nextPage=null) => {
         if (query) {
+            setLoading(true);
             try {
-                setLoading(true);
-                await getQuery(nextPage)
+                await getQuery(nextPage);
+                setIsError(false);
             } catch (error) {
-                console.error('Error fetching search results: ', error);
+                setIsError(true);
+                setMessage(`Error fetching search results: ${error.message}`)
             } finally {
                 setLoading(false);
             }
         } else {
             setResults({});
+            setIsError(false);
         }
     }
 
@@ -37,13 +46,28 @@ function App() {
         const { hits, pages } = await (await fetch(`${process.env.REACT_APP_BASE_URL}/api/search/?query=${query}${nextPage ? `&page=${nextPage}` : ''}`)).json();
         
         if(!nextPage) setPage(1);
-        setHits(hits);
         setResults(pages || {});
-        setCached(pages[nextPage || 1]?.cached || false);
         setTotalPages(pages[nextPage || 1]?.data.total_pages || 1);
+
+        const foundMovies = pages[nextPage || 1]?.data?.total_results > 0;
+        
+        if (foundMovies) {
+            const cached = pages[nextPage || 1]?.cached;
+            const hitsMessage = `Repeated query hits in the last 2 mins: ${hits}.`;
+            const queryResultMessage = (cached ? cacheMessage : renderedFromServerMessage) + (process.env.REACT_APP_ENVIRONMENT === 'dev' ? ' ' + hitsMessage: '');
+            setMessage(queryResultMessage);
+        } else {
+            setMessage(noResultsMessage);
+        }
      };
 
-    useEffect(() => { handleRequest()}, [query]);
+    useEffect(() => { 
+        if (query) {
+            handleRequest();
+        } else {
+            setMessage(defaultMessage);
+        }
+    }, [query]);
 
     return (
         <>
@@ -54,7 +78,7 @@ function App() {
               </div>
            ) : (
               <>
-                 <CacheNotification query={query} totalResults={results[page]?.data?.total_results} cached={cachedStatus} hits={hits} />
+                 <Notification type={isError ? 'error': 'info'} message={message} />
                  <MovieList pageData={results[page]?.data?.results ?? []} />
               </>
            )}
