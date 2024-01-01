@@ -101,7 +101,7 @@ CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.db.DatabaseCache",
         "LOCATION": "movies_cache",
-        "TIMEOUT": 180
+        "TIMEOUT": 120
     }
 }
 

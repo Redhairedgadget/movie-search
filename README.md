@@ -19,7 +19,7 @@ source path/to/your/movie-search-venv/bin/activate
 
 pip install -r requirements.txt
 
-python manage.py createcachetable
+python3 manage.py createcachetable
 python3 manage.py migrate
 python3 manage.py runserver
 ```
@@ -29,7 +29,7 @@ Create .env and put your TMDB_KEY and SECRET_KEY there.
 ### Run client
 
 ```
-cd you/path/to/movie-search/frontend
+cd your/path/to/movie-search/frontend
 ```
 
 Create .env with REACT_APP_BASE_URL (your local server url) and REACT_APP_ENVIRONMENT ('dev').
@@ -37,6 +37,16 @@ Create .env with REACT_APP_BASE_URL (your local server url) and REACT_APP_ENVIRO
 
 ```
 npm install
+```
+
+## Testing
+
+Unit tests were made for basic functionalities.
+
+For the backend:
+```
+cd your/path/to/movie-search/backend
+python3 manage.py test
 ```
 
 ## Deployment
