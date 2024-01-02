@@ -37,6 +37,7 @@ Create .env with REACT_APP_BASE_URL (your local server url) and REACT_APP_ENVIRO
 
 ```
 npm install
+npm start
 ```
 
 ## Testing
