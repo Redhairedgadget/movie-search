@@ -1,3 +1,7 @@
+:root {
+    --pagination-button-size: 4.2vh;
+}
+
 .pagination {
     background-color: var(--secondary);
     border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -10,7 +14,6 @@
 }
 
 .pagination button {
-    --pagination-button-size: 4.2vh;
     height: var(--pagination-button-size);
     width: var(--pagination-button-size);
     border-radius: 50%;
