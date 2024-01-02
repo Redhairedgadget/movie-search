@@ -1,7 +1,7 @@
 # movie-search
 
 It allows you to search for movies!\
-And it caches the result of the query while counting the amount of hits agaisnt it. For two minutes.\
+And it caches the result of the query while counting the amount of hits agaisnt it for two minutes.\
 Uses [TMDB](https://developer.themoviedb.org/reference/intro/getting-started) API.
 
 ## Local build

@@ -25,14 +25,14 @@ const Header = ({setQuery}) => {
 
 
     return (
-        <div className='title-search'>
+        <header className='title-search'>
             <h3 className="title">Movie Search</h3>
             <form className='search-bar'>
                 <input type="text" placeholder="Search movies..." onChange={handleTextChange} maxLength={200}/>
                 <button type="submit" onClick={handleClick}><i className="fa fa-search" aria-hidden="true" ></i></button>
             </form>
 
-        </div>
+        </header>
     )
 }
 
